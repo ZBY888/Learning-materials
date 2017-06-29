@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script type="text/javascript" src="iscroll-probe.js"></script>
+		<style type="text/css">
+			*{
+	        	margin: 0;
+	        	padding: 0
+	        }
+	      	html,body{
+	       		height: 100%;
+	       		overflow: hidden;
+	       	}
+	        li{
+	        	height: 40px;
+	        	line-height: 40px;
+	        	color: pink
+	        }
+	
+	   		header,footer{
+		     	height: 44px;
+		     	text-align: center;
+		        line-height: 44px;
+		        background: #e7e7e7;
+		        position: relative;
+		        z-index: 9999
+	     	} 
+		    header{
+		    	border-bottom: 1px solid pink
+		    }
+		    footer {
+		    	border-top: 1px solid pink
+		    }
+		    .wrap{
+		    	flex:1;
+		    }
+		</style>
+	</head>
+	<body>
+		<header class="header">
+	        	拉勾网
+	    </header>
+
+		<div class="wrap">
+			<div class="scroll">
+				  <div id="downTag" style="height: 40px;width:100%;background-color: #f3f3f3;text-align:center;line-height:40px;">下拉
+		          </div> 
+				<ul class="ulDom">
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+					<li>1702作业少！</li>
+				</ul>
+				<div id="upTag" style="height: 0px;width:100%;background-color: #f3f3f3;text-align: center; line-height: 40px;">上拉</div>
+			</div>
+		</div>
+		<script src="https://unpkg.com/jquery@3.2.1"></script>
+		<script type="text/javascript">
+			var winHeight = window.innerHeight;
+			var headHeight = document.querySelector("header").clientHeight;
+			$(".wrap").css("height",winHeight-headHeight + "px");
+			var myScroll = new IScroll(".wrap",{
+//				tap:true,
+//				probeType: 2,
+				startY : -40
+			});
+			
+    
+		    
+		</script>
+		
+	</body>
+</html>

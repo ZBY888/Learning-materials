@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Document</title>
+	<style>
+        *{
+        	margin: 0;
+        	padding: 0
+        }
+       html,body{
+       	height: 100%;
+       	overflow: hidden;
+       }
+        li{
+        	height: 40px;
+        	line-height: 40px;
+        	color: pink
+        }
+
+    header,footer{
+     	height: 44px;
+     	text-align: center;
+        line-height: 44px;
+        background: #e7e7e7;
+        position: relative;
+        z-index: 9999
+     } 
+     header{
+     	border-bottom: 1px solid pink
+     }
+     footer {
+     	border-top: 1px solid pink
+     }
+     .wrap{
+     	flex:1;
+     }
+
+	</style>
+	<script src="iscroll-probe.js"></script>
+</head>
+<body>
+
+	  <header class="header">
+        拉勾网
+      </header>
+
+	<div class="wrap">
+		<div class="scroll">
+			  <div id="downTag" style="height: 40px;width:100%;background-color: #f3f3f3;text-align:center;line-height:40px;">下拉
+	          </div> 
+			<ul class="ulDom">
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+				<li>1702作业少！</li>
+			</ul>
+			<div id="upTag" style="height: 0px;width:100%;background-color: #f3f3f3;text-align: center; line-height: 40px;">上拉</div>
+		</div>
+	</div>
+</body>
+<script src="https://unpkg.com/jquery@3.2.1"></script>
+<script>
+    
+    //计算滚动成的高度
+    var winHeight = window.innerHeight;//屏幕的高度
+    var headerHeight = document.querySelector('header').clientHeight;//头部的高度
+    document.querySelector('.wrap').style.height = (winHeight - headerHeight) + 'px' ;//滚动层高度
+   
+//   var flag = ""; // 判断你停止后的操作 要么加载更多 要么刷新
+//   var downTag = document.querySelector('#downTag');
+//   var upTag = document.querySelector('#upTag');
+//   var ulDom = document.querySelector('.ulDom');
+//   var maxScrollY = 0; //定义当前最大的滚动高度
+
+
+	var myScroll = new IScroll('.wrap',{
+//      scrollbars:true, //增加滚动条
+//      mouseWheel:true,//鼠标滑轮滚动
+        tap:true, //当前的滚动列表就支持 tap 事件 
+        scrollX:true, //允许左右滚动
+    /*    bounceEasing:'bounce',*/
+        probeType: 2,
+        startY:-40
+        /*bounce:false*/
+	}); //传当前的包裹层 , 包裹层的高度必须要固定
+
+
+
+     
+//   maxScrollY = myScroll.maxScrollY ; //记录一下 最大的滚动高度
+//
+//   //开始滚动触发
+//   myScroll.on('scrollStart',function(){
+//       //console.log(11)
+//   })
+// 
+//   //持续滚动事件默认没有,添加 probeType 这个配置项
+//   myScroll.on('scroll',function(){
+//       //1：拉的方向，2，具体拉了多少像素
+//      // console.log(this.directionY) 
+//       
+//
+//      if (this.directionY==-1 && this.y >= 5 && flag == "") { //处理下拉刷新
+//            downTag.innerHTML = "释放刷新";
+//            flag = "up";//你想要做刷新操作
+//      };
+//
+//      // 下拉过了，然后 我又不想刷新了，怼回去
+//      if (flag == "up" && this.directionY==1 && this.y <-3 ) {
+//           downTag.innerHTML = "下拉";
+//           flag="";
+//      };
+//
+//
+//      if (this.directionY ==1 && this.y< maxScrollY-40 && flag=="") {
+//      	  this.maxScrollY = maxScrollY-40 ; //为了滚动停下来。高度 -40（） 
+//            upTag.innerHTML = "释放加载";
+//            flag="down" //你想加载更多
+//      };
+//      
+//      //上拉 拉过了 
+//       console.log(maxScrollY-40 +'++++...'+ this.y);
+//
+//      if (flag =="down" &&  this.directionY==-1 && this.y > maxScrollY-40)  {
+//           this.maxScrollY = maxScrollY;
+//      	 upTag.innerHTML = "上拉";
+//           flag=""
+//      };
+//
+//   })
+//
+//   myScroll.on('scrollEnd',function(){
+//
+//       if (this.y <= 0 && this.y>-40 && flag=="" ) { //拉动到 
+//       	 this.scrollTo(0,-40,400);
+//       };
+//
+//       if(flag == "up"){ //拉成功了
+//           //写你的业务，做异步操作
+//           downTag.innerHTML = "加载中...";
+//           flag = "";
+//           setTimeout(function(){
+//               fresh()
+//       	 },1500)
+//       }
+//        
+//       if (flag == "down") {
+//           upTag.innerHTML = "数据加载中...";
+//           flag = "";
+//       	//做加载更多的操作 
+//           setTimeout(function(){
+//               getList()
+//       	 },1500)
+//       };
+//   })
+//
+//   function fresh(){ 
+//       downTag.innerHTML = "下拉";
+//       myScroll.scrollTo(0,-40,400);
+//       myScroll.refresh();
+//   }
+//
+//   function getList(){
+//         var str = '<li>Pretty row new</li>'+
+//			'<li>Pretty row new</li>'+
+//			'<li>Pretty row new</li>'+
+//			'<li>Pretty row new</li>';
+//          $(ulDom).append(str);
+//          upTag.innerHTML="上拉";
+//          myScroll.refresh(); 
+//          maxScrollY = myScroll.maxScrollY ;
+//      };
+
+</script>
+</html>
