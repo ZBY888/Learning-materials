@@ -84,9 +84,28 @@
 			$(".wrap").css("height",winHeight-headHeight + "px");
 			var myScroll = new IScroll(".wrap",{
 //				tap:true,
-//				probeType: 2,
+				probeType: 2,
 				startY : -40
 			});
+			var flag = "";//判断停止后的操作，要么刷新要么加载
+			var _downTag = $("#downTag");
+			console.log(_downTag)
+			var myScrolly = 0;//最大滚动高度
+			myScroll.on("scrollStart",function(){//开始滚动
+				console.log(11);
+//				if(this.directionY == -1 && )
+			});
+			
+			myScroll.on("scroll",function(){//持续滚动，默认情况下没有，需要添加probeType这个配置项
+				if(this.directionY == -1 && this.y >= 5 && flag == ""){//下拉刷新
+					_downTag.innerHTML = "释放刷新";
+					flag = "down";
+				}
+			})
+			
+//			myScroll.on("scrollEnd",function(){//滚动结束
+//				
+//			})
 			
     
 		    
